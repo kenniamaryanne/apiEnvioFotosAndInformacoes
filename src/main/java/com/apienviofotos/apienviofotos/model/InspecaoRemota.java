@@ -1,6 +1,6 @@
 package com.apienviofotos.apienviofotos.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class InspecaoRemota {
@@ -13,7 +13,7 @@ public class InspecaoRemota {
     private String longitude;
     private String observacao;
 
-   // private LocalDateTime dataHora;
+    private LocalDate data;
     private String tipo;
 
 
@@ -57,13 +57,6 @@ public class InspecaoRemota {
         this.observacao = observacao;
     }
 
-//    public LocalDateTime getDataHora() {
-//        return dataHora;
-//    }
-
-//    public void setDataHora(String dataHora) {
-//        this.dataHora = LocalDateTime.parse(dataHora, DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
-//    }
 
     public Long getVistoria() {
         return vistoria;
@@ -82,6 +75,12 @@ public class InspecaoRemota {
     }
 
 
+    public LocalDate getData() {
+        return data;
+    }
 
+    public void setData(LocalDate dataHora) {
+        this.data = dataHora;
+    }
 }
 

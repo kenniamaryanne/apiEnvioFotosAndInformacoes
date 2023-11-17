@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDate;
+
 @Entity
 public class Fotos_inspecao {
 
@@ -18,6 +20,8 @@ public class Fotos_inspecao {
     private String longitude;
     private String observacao;
     private String tipo;
+
+    private LocalDate data;
 
     public String getCaminho() {
         return caminho;
@@ -78,7 +82,11 @@ public class Fotos_inspecao {
     }
 
 
+    public LocalDate getData() {
+        return data;
+    }
 
-
-
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
 }

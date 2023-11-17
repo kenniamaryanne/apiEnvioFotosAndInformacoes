@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.format.annotation.*;
 
 @RestController
 @RequestMapping("/inspecoes")
@@ -29,13 +31,10 @@ public class InspecaoController {
                                                      @RequestParam("longitude") String longitude,
                                                      @RequestParam("observacao") String observacao,
                                                      @RequestParam("tipo") String tipo,
-                                                     @RequestParam("vistoria") Long vistoria) {
+                                                     @RequestParam("vistoria") Long vistoria,
+                                                     @RequestParam("data") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data) {
         try {
-            // Converter a String dataHora para LocalDateTime (assumindo um formato específico)
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-//            LocalDateTime dataHoraFormatada = LocalDateTime.parse(dataHora, formatter);
 
-            // Agora você tem todos os campos disponíveis para processar como desejar
             InspecaoRemota inspecaoRemota = new InspecaoRemota();
             inspecaoRemota.setVistoria(vistoria);
             inspecaoRemota.setFoto(foto.getBytes());
@@ -43,16 +42,15 @@ public class InspecaoController {
             inspecaoRemota.setLatitude(latitude);
             inspecaoRemota.setLongitude(longitude);
             inspecaoRemota.setObservacao(observacao);
-           // inspecaoRemota.setDataHora(dataHora);
+            inspecaoRemota.setData(data);
             inspecaoRemota.setTipo(tipo);
 
             inspecaoService.processarJson(inspecaoRemota);
 
-            // Agora você pode processar a InspecaoRemota como necessário
 
             return ResponseEntity.ok("JSON processado com sucesso");
         } catch (IOException e) {
-            // Trate os erros, por exemplo, lançando uma exceção personalizada
+
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro no processamento do JSON");
         }
     }
