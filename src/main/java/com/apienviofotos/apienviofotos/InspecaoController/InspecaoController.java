@@ -25,7 +25,7 @@ public class InspecaoController {
     private InspecaoService inspecaoService;
 
     @PostMapping("/processar")
-    public ResponseEntity<String> processarInspecoes(@RequestParam("foto") MultipartFile foto,
+    public ResponseEntity<?> processarInspecoes(@RequestParam("foto") MultipartFile foto,
                                                      @RequestParam("descricao") String descricao,
                                                      @RequestParam("latitude") String latitude,
                                                      @RequestParam("longitude") String longitude,
@@ -48,7 +48,7 @@ public class InspecaoController {
             inspecaoService.processarJson(inspecaoRemota);
 
 
-            return ResponseEntity.ok("JSON processado com sucesso");
+            return ResponseEntity.ok(inspecaoRemota);
         } catch (IOException e) {
 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro no processamento do JSON");
