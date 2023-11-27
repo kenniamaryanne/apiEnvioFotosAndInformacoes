@@ -81,10 +81,13 @@ public class InspecaoService {
             boolean criadoVistoria = diretorioVistoria.mkdirs();
         }
 
+
         String nomeArquivo = "foto_vistoria" + inspecao.getVistoria()+"foto_" +inspecao.getDescricao()+System.currentTimeMillis() + ".png";
         byte[] bytes = inspecao.getFoto();
         Path path = Paths.get(caminhoVistoria,nomeArquivo);
         Files.write(path, bytes);
+
+        caminhoVistoria = caminhoVistoria +File.separator+ nomeArquivo;
 
         salvarInspecao(inspecao,caminhoVistoria);
 
