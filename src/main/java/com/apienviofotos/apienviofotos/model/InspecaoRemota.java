@@ -13,7 +13,7 @@ public class InspecaoRemota {
     private String longitude;
     private String observacao;
 
-    private LocalDate data;
+    private String data;
     private String tipo;
 
 
@@ -75,11 +75,11 @@ public class InspecaoRemota {
     }
 
 
-    public LocalDate getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(LocalDate dataHora) {
+    public void setData(String dataHora) {
         this.data = dataHora;
     }
 }

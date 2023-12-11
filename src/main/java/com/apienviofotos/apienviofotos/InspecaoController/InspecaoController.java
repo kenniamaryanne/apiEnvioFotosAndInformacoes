@@ -32,7 +32,7 @@ public class InspecaoController {
                                                      @RequestParam("observacao") String observacao,
                                                      @RequestParam("tipo") String tipo,
                                                      @RequestParam("vistoria") Long vistoria,
-                                                     @RequestParam("data") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data) {
+                                                     @RequestParam("data") String data) {
         try {
 
             InspecaoRemota inspecaoRemota = new InspecaoRemota();

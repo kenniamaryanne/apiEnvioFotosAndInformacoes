@@ -21,7 +21,7 @@ public class Fotos_inspecao {
     private String observacao;
     private String tipo;
 
-    private LocalDate data;
+    private String data;
 
     public String getCaminho() {
         return caminho;
@@ -82,11 +82,11 @@ public class Fotos_inspecao {
     }
 
 
-    public LocalDate getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(String data) {
         this.data = data;
     }
 }
